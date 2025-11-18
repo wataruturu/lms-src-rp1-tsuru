@@ -333,5 +333,15 @@ public class StudentAttendanceService {
 		// 完了メッセージ
 		return messageUtil.getMessage(Constants.PROP_KEY_ATTENDANCE_UPDATE_NOTICE);
 	}
+	
+	public String inputCheck(Integer courseId,Integer lmsUserId) {
+		//今日の日付を取得
+		Date date = new Date();
+		// 勤怠管理リストの取得
+		tStudentAttendanceMapper.notEnterCount(lmsUserId, Constants.DB_FLG_FALSE, date);
+		
+		return "";
+	}
+	
 
 }
