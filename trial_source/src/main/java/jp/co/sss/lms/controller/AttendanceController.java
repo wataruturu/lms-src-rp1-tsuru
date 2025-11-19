@@ -46,7 +46,9 @@ public class AttendanceController {
 		List<AttendanceManagementDto> attendanceManagementDtoList = studentAttendanceService
 				.getAttendanceManagement(loginUserDto.getCourseId(), loginUserDto.getLmsUserId());
 		model.addAttribute("attendanceManagementDtoList", attendanceManagementDtoList);
-
+		Integer notEnterCount = studentAttendanceService.notEnterCount(loginUserDto.getLmsUserId());
+		model.addAttribute("notEnter",notEnterCount != 0);
+		System.out.println(notEnterCount );
 		return "attendance/detail";
 	}
 
