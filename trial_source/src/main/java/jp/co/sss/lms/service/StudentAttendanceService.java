@@ -334,13 +334,19 @@ public class StudentAttendanceService {
 		return messageUtil.getMessage(Constants.PROP_KEY_ATTENDANCE_UPDATE_NOTICE);
 	}
 	
-	public Integer notEnterCount(Integer lmsUserId) {
+	/**
+	 * 未入力件数取得
+	 * @author 水流
+	 * @param lmsUserId
+	 * @return 未入力件数の有無
+	 */
+	public Boolean notEnterCount(Integer lmsUserId) {
 		//今日の日付を取得
 		Date date = new Date();
 		// 勤怠管理リストの取得
 		Integer notEnterCountNum = tStudentAttendanceMapper.notEnterCount(lmsUserId, Constants.DB_FLG_FALSE, date);
-		
-		return notEnterCountNum;
+		//未入力件数の有無
+		return notEnterCountNum !=0;
 	}
 	
 
