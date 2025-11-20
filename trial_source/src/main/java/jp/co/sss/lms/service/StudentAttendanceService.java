@@ -43,7 +43,6 @@ public class StudentAttendanceService {
 	private LoginUserDto loginUserDto;
 	@Autowired
 	private TStudentAttendanceMapper tStudentAttendanceMapper;
-
 	/**
 	 * 勤怠一覧情報取得
 	 * 
@@ -336,17 +335,17 @@ public class StudentAttendanceService {
 	
 	/**
 	 * 未入力件数取得
-	 * @author 水流
+	 * @author 水流　Task25
 	 * @param lmsUserId
 	 * @return 未入力件数の有無
 	 */
-	public Boolean notEnterCount(Integer lmsUserId) {
-		//今日の日付を取得
-		Date date = new Date();
+	public Boolean notEnterCheck(Integer lmsUserId) {
+		//今日の日付を取得 
+		String date = dateUtil.toString(new Date());
 		// 勤怠管理リストの取得
-		Integer notEnterCountNum = tStudentAttendanceMapper.notEnterCount(lmsUserId, Constants.DB_FLG_FALSE, date);
+		Integer notEnterCount = tStudentAttendanceMapper.notEnterCount(lmsUserId, Constants.DB_FLG_FALSE, date);
 		//未入力件数の有無
-		return notEnterCountNum !=0;
+		return notEnterCount >0;
 	}
 	
 

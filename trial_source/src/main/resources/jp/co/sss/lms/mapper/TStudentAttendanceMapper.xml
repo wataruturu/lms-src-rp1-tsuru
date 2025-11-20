@@ -106,16 +106,15 @@
 
 	<select id="notEnterCount" resultType="Integer">
 		SELECT count(*)
-		FROM m_course t1
-				INNER JOIN m_section t2 ON t1.course_id = t2.course_id
-		LEFT OUTER JOIN t_student_attendance t3 ON t3.lms_user_id = #{lmsUserId}
-		AND cast(t2.date AS DATE) = cast(t3.training_date AS DATE)
-		WHERE
+		FROM t_student_attendance
 		
-		t3.training_date <![CDATA[ < ]]>#{trainingDate}
-		AND t1.delete_flg = #{deleteFlg}
-		AND (t3.training_start_time IS NULL OR t3.training_end_time IS NULL
-		OR t3.training_start_time = '' OR t3.training_end_time = '')
+		WHERE
+		lms_user_id = #{lmsUserId}
+		AND delete_flg = #{deleteFlg}
+		AND cast(training_date AS DATE) <![CDATA[ < ]]> TO_DATE(#{trainingDate},'yyyy/MM/dd')
+		AND 
+		(training_start_time = '' OR training_end_time = '' 
+		OR training_start_time IS NULL OR training_end_time IS NULL)
 	</select>
 
 </mapper>
