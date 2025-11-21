@@ -146,5 +146,40 @@ public class AttendanceUtil {
 		}
 		return false;
 	}
+	/**
+	 * 時間マップ
+	 * @author　水流　Task26
+	 * @return 時間マップリスト
+	 */
+	public LinkedHashMap<Integer, String> setMapHour() {
+		LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
+		map.put(null, "");
+		for (int hour = 0; hour < 24;hour++) {
 
+			String time;
+
+			time =("0" + hour).substring(("0" + hour).length()-2); 
+			map.put(hour, time);
+			
+		}
+		return map;
+	}
+	/**
+	 * 分マップ
+	 * @author　水流　Task26
+	 * @return 分マップリスト
+	 */
+	public LinkedHashMap<Integer, String> setMapMinute() {
+		LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
+		map.put(null, "");
+		for (int minute = 0; minute < 60;minute++) {
+
+			String time;
+
+			time =("0" + minute).substring(("0" + minute).length()-2); 
+			map.put(minute, time);
+			
+		}
+		return map;
+	}
 }

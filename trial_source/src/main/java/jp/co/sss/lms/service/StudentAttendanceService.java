@@ -218,6 +218,10 @@ public class StudentAttendanceService {
 		attendanceForm.setUserName(loginUserDto.getUserName());
 		attendanceForm.setLeaveFlg(loginUserDto.getLeaveFlg());
 		attendanceForm.setBlankTimes(attendanceUtil.setBlankTime());
+		// 水流　TASK26
+		attendanceForm.setMapHours(attendanceUtil.setMapHour());
+		attendanceForm.setMapMinutes(attendanceUtil.setMapMinute());
+		
 
 		// 途中退校している場合のみ設定
 		if (loginUserDto.getLeaveDate() != null) {
