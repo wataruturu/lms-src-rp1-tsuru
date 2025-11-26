@@ -158,7 +158,7 @@ public class AttendanceUtil {
 
 			String hourStr;
 
-			hourStr  = String.format("%02d", hour);
+			hourStr  = hour + "時";
 			map.put(hour, hourStr);
 			
 		}
@@ -176,7 +176,7 @@ public class AttendanceUtil {
 
 			String minuteStr;
 
-			minuteStr = String.format("%02d", minute); 
+			minuteStr = minute + "分"; 
 			map.put(minute, minuteStr);
 			
 		}

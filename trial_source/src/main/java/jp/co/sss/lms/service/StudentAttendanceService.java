@@ -315,12 +315,18 @@ public class StudentAttendanceService {
 			tStudentAttendance.setAccountId(loginUserDto.getAccountId());
 			// 出勤時刻整形
 			TrainingTime trainingStartTime = null;
+			if(dailyAttendanceForm.getTrainingStartHour() != null && dailyAttendanceForm.getTrainingStartMinute() != null) {
 			trainingStartTime = new TrainingTime(dailyAttendanceForm.getTrainingStartHour(),dailyAttendanceForm.getTrainingStartMinute());
 			tStudentAttendance.setTrainingStartTime(trainingStartTime.getFormattedString());
+			}
+			
 			// 退勤時刻整形
 			TrainingTime trainingEndTime = null;
+			if(dailyAttendanceForm.getTrainingEndHour() != null && dailyAttendanceForm.getTrainingEndMinute() != null) {
 			trainingEndTime = new TrainingTime(dailyAttendanceForm.getTrainingEndHour(),dailyAttendanceForm.getTrainingEndMinute());
 			tStudentAttendance.setTrainingEndTime(trainingEndTime.getFormattedString());
+			}
+			
 			// 中抜け時間
 			tStudentAttendance.setBlankTime(dailyAttendanceForm.getBlankTime());
 			// 遅刻早退ステータス
