@@ -151,15 +151,15 @@ public class AttendanceUtil {
 	 * @author　水流　Task26
 	 * @return 時間マップリスト
 	 */
-	public LinkedHashMap<Integer, String> setMapHour() {
+	public LinkedHashMap<Integer, String> getHourMap() {
 		LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
 		map.put(null, "");
 		for (int hour = 0; hour < 24;hour++) {
 
-			String time;
+			String hourStr;
 
-			time =("0" + hour).substring(("0" + hour).length()-2); 
-			map.put(hour, time);
+			hourStr  = String.format("%02d", hour);
+			map.put(hour, hourStr);
 			
 		}
 		return map;
@@ -169,15 +169,15 @@ public class AttendanceUtil {
 	 * @author　水流　Task26
 	 * @return 分マップリスト
 	 */
-	public LinkedHashMap<Integer, String> setMapMinute() {
+	public LinkedHashMap<Integer, String> getMinuteMap() {
 		LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
 		map.put(null, "");
 		for (int minute = 0; minute < 60;minute++) {
 
-			String time;
+			String minuteStr;
 
-			time =("0" + minute).substring(("0" + minute).length()-2); 
-			map.put(minute, time);
+			minuteStr = String.format("%02d", minute); 
+			map.put(minute, minuteStr);
 			
 		}
 		return map;
